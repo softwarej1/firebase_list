@@ -18,17 +18,21 @@ class todoApi {
   }
 
   static Future<void> createTodo(TodoModel todoModel) {
-    return firebaseFirestore.collection('todo').doc().set({
-      'todo': todoModel.todo,
-      'time': Timestamp.now(),
-      'isDone': false,
-    });
+    return firebaseFirestore.collection('todo').doc().set(
+      {
+        'todo': todoModel.todo,
+        'time': Timestamp.now(),
+        'isDone': false,
+      },
+    );
   }
 
   static void updateTodo(String id) {
-    firebaseFirestore.collection('todo').doc(id).update({
-      'isDone': true,
-    });
+    firebaseFirestore.collection('todo').doc(id).update(
+      {
+        'isDone': true,
+      },
+    );
   }
 
   static void deleteTodo(String id) {
